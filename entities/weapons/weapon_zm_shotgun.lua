@@ -207,16 +207,17 @@ function SWEP:ShootBullet( dmg, recoil, numbul, cone )
    bullet.Callback = function ( att, tr, dmg )
       if att and att:IsValid() then
 	      local dist = (tr.HitPos - tr.StartPos):Length()
+		  --print(dist)
 			if dist > 150 then
-			   if dist > 500 then
+			   if dist > 600 then
 			      dmg:ScaleDamage(.5)
 			   else
-			      dmg:ScaleDamage(1 - ((dist-150)/350))
+			      dmg:ScaleDamage(math.Clamp(1-dist/600,.5,1))
 			   end
 	      end
+		  print(dmg)
 	   end
 	end
-	
    
    self:GetOwner():FireBullets( bullet )
 
