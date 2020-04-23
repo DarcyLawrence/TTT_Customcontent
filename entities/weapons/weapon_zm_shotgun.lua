@@ -22,7 +22,7 @@ SWEP.WeaponID              = AMMO_SHOTGUN
 
 SWEP.Primary.Ammo          = "Buckshot"
 SWEP.Primary.Damage        = 11
-SWEP.Primary.Cone          = 0.085
+SWEP.Primary.Cone          = 0.15
 SWEP.Primary.Delay         = 0.8
 SWEP.Primary.ClipSize      = 8
 SWEP.Primary.ClipMax       = 24
@@ -182,48 +182,3 @@ function SWEP:SecondaryAttack()
    self:SetNextSecondaryFire(CurTime() + 0.3)
 end
 
--- Damage falloff based on distance
-function SWEP:PrimaryAttack(worldsnd)
-
-   local distMin = 16
-   local distMax = 128
-   local minDamage = self.Primary.Damage*.5
-   local dist = 0;
-
-   local eye = self.Owner:GetEyeTrace()
-   
-   if !IsValid(eye.Entity) or !eye.Entity:IsPlayer() then
-   dist = self.Owner:GetPos():Distance(eye.HitPos)	
-   end
-
-   
-   local damagefalloff = self.Primary.damage
-   
-   if dist <= distMin then
-	  damagefalloff = self.Primary.damage
-   elseif dist >= distMax then
-      damagefalloff = minDamage
-   else
-      damagefalloff = self.Primary.Damage * (dist/distMax)
-   end
-
-   self:SetNextSecondaryFire( CurTime() + self.Primary.Delay )
-   self:SetNextPrimaryFire( CurTime() + self.Primary.Delay )
-
-   if not self:CanPrimaryAttack() then return end
-
-   if not worldsnd then
-      self:EmitSound( self.Primary.Sound, self.Primary.SoundLevel )
-   elseif SERVER then
-      sound.Play(self.Primary.Sound, self:GetPos(), self.Primary.SoundLevel)
-   end 
-   
-   self:ShootBullet( damagefalloff, self.Primary.Recoil, self.Primary.NumShots, self:GetPrimaryCone() )
-
-   self:TakePrimaryAmmo( 1 )
-
-   local owner = self:GetOwner()
-   if not IsValid(owner) or owner:IsNPC() or (not owner.ViewPunch) then return end
-
-   owner:ViewPunch( Angle( util.SharedRandom(self:GetClass(),-0.2,-0.1,0) * self.Primary.Recoil, util.SharedRandom(self:GetClass(),-0.1,0.1,1) * self.Primary.Recoil, 0 ) )
-end

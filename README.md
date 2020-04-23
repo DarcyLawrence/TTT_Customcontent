@@ -14,6 +14,8 @@ Various changes to the base TTT gamemode:
 - HUGE damage increase
 - HUGE firerate decreased
 
+- Increased shotgun spread
+
 - Knife instant kills at <80 health
 
 Credits
