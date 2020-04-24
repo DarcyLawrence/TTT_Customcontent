@@ -100,6 +100,10 @@ SWEP.Primary.NumShots       = 1
 SWEP.Primary.Cone           = 0.02
 SWEP.Primary.Delay          = 0.15
 
+SWEP.Primary.FalloffMin		= -1
+SWEP.Primary.FalloffMax		= -1
+SWEP.Primary.Falloffscale	= -1
+
 SWEP.Primary.ClipSize       = -1
 SWEP.Primary.DefaultClip    = -1
 SWEP.Primary.Automatic      = false
@@ -237,7 +241,7 @@ function SWEP:PrimaryAttack(worldsnd)
       sound.Play(self.Primary.Sound, self:GetPos(), self.Primary.SoundLevel)
    end
 
-   self:ShootBullet( self.Primary.Damage, self.Primary.Recoil, self.Primary.NumShots, self:GetPrimaryCone() )
+   self:ShootBullet( self.Primary.Damage, self.Primary.Recoil, self.Primary.NumShots, self:GetPrimaryCone() , self.Primary.FalloffMin, self.Primary.FalloffMax, self.Primary.Falloffscale)
 
    self:TakePrimaryAmmo( 1 )
 
@@ -286,7 +290,7 @@ local function Sparklies(attacker, tr, dmginfo)
    end
 end
 
-function SWEP:ShootBullet( dmg, recoil, numbul, cone )
+function SWEP:ShootBullet( dmg, recoil, numbul, cone, fallmin, fallmax, scale)
 
    self:SendWeaponAnim(self.PrimaryAnim)
 
@@ -307,9 +311,22 @@ function SWEP:ShootBullet( dmg, recoil, numbul, cone )
    bullet.TracerName = self.Tracer or "Tracer"
    bullet.Force  = 10
    bullet.Damage = dmg
-   if CLIENT and sparkle:GetBool() then
-      bullet.Callback = Sparklies
-   end
+   
+   -- Apply bullet falloff
+   if fallmin > -1 and fallmax > -1 then
+	   bullet.Callback = function ( att, tr, dmg )
+	   if att and att:IsValid() then
+		  local dist = (tr.HitPos - tr.StartPos):Length()
+			 if dist > fallmin then
+				if dist > fallmax then
+				   dmg:ScaleDamage(.5)
+				   else
+					  dmg:ScaleDamage(math.Clamp(1-dist/fallmax,scale,1))
+				   end
+				end
+			end
+		end
+	end
 
    self:GetOwner():FireBullets( bullet )
 

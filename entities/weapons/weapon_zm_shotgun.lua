@@ -32,6 +32,10 @@ SWEP.Primary.NumShots      = 8
 SWEP.Primary.Sound         = Sound( "Weapon_XM1014.Single" )
 SWEP.Primary.Recoil        = 7
 
+SWEP.Primary.FalloffMin		= 150
+SWEP.Primary.FalloffMax		= 600
+SWEP.Primary.Falloffscale	= .5
+
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_box_buckshot_ttt"
@@ -180,56 +184,4 @@ function SWEP:SecondaryAttack()
    self:SetIronsights(not self:GetIronsights())
 
    self:SetNextSecondaryFire(CurTime() + 0.3)
-end
-
-function SWEP:ShootBullet( dmg, recoil, numbul, cone )
-
-   self:SendWeaponAnim(self.PrimaryAnim)
-
-   self:GetOwner():MuzzleFlash()
-   self:GetOwner():SetAnimation( PLAYER_ATTACK1 )
-
-   local sights = self:GetIronsights()
-
-   numbul = numbul or 1
-   cone   = cone   or 0.01
-
-   local bullet = {}
-   bullet.Num    = numbul
-   bullet.Src    = self:GetOwner():GetShootPos()
-   bullet.Dir    = self:GetOwner():GetAimVector()
-   bullet.Spread = Vector( cone, cone, 0 )
-   bullet.Tracer = 4
-   bullet.TracerName = self.Tracer or "Tracer"
-   bullet.Force  = 10
-   bullet.Damage = dmg
-   
-   bullet.Callback = function ( att, tr, dmg )
-      if att and att:IsValid() then
-	      local dist = (tr.HitPos - tr.StartPos):Length()
-			if dist > 150 then
-			   if dist > 600 then
-			      dmg:ScaleDamage(.5)
-			   else
-			      dmg:ScaleDamage(math.Clamp(1-dist/600,.5,1))
-			   end
-	      end
-	   end
-	end
-   
-   self:GetOwner():FireBullets( bullet )
-
-   -- Owner can die after firebullets
-   if (not IsValid(self:GetOwner())) or (not self:GetOwner():Alive()) or self:GetOwner():IsNPC() then return end
-
-   if ((game.SinglePlayer() and SERVER) or
-       ((not game.SinglePlayer()) and CLIENT and IsFirstTimePredicted())) then
-
-      -- reduce recoil if ironsighting
-      recoil = sights and (recoil * 0.6) or recoil
-
-      local eyeang = self:GetOwner():EyeAngles()
-      eyeang.pitch = eyeang.pitch - recoil
-      self:GetOwner():SetEyeAngles( eyeang )
-   end
 end
