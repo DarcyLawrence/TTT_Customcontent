@@ -1,7 +1,7 @@
-"terrortown"
+"terrortown_pain"
 {
 	"base"		"base"
-	"title"		"Trouble in Terrorist Town"
+	"title"		"Trouble in Terrorist Town (Pain)"
 	"maps"		"^ttt_"
 	"menusystem"	"1"
 
