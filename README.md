@@ -10,11 +10,11 @@ Description
 ===========
 Various changes to the base TTT gamemode:
 
-- HUGE recoil reduced
-- HUGE damage increase
-- HUGE firerate decreased
+- H.U.G.E recoil reduced
+- H.U.G.E damage increase
+- H.U.G.E firerate decreased
 
-- Added damage falloff to shotgun
+- Added damage falloff functionality for all weapons (only used by shotgun currently)
 
 - Knife instant kills at <80 health
 
