@@ -2,7 +2,7 @@
 {
 	"base"		"base"
 	"title"		"Trouble in Terrorist Town (Pain)"
-	"maps"		"^ttt_"
+	"maps"		""
 	"menusystem"	"1"
 
 	"settings"
