@@ -20,8 +20,8 @@ SWEP.WeaponID              = AMMO_PISTOL
 
 SWEP.Primary.Recoil        = 1.5
 SWEP.Primary.Damage        = 25
-SWEP.Primary.Delay         = 0.38
-SWEP.Primary.Cone          = 0.02
+SWEP.Primary.Delay         = 0.35
+SWEP.Primary.Cone          = 0.015
 SWEP.Primary.ClipSize      = 20
 SWEP.Primary.Automatic     = true
 SWEP.Primary.DefaultClip   = 20

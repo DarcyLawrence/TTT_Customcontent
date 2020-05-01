@@ -19,11 +19,11 @@ SWEP.Kind                  = WEAPON_HEAVY
 SWEP.WeaponID              = AMMO_RIFLE
 
 SWEP.Primary.Delay         = 0.40
-SWEP.Primary.Recoil        = 3
+SWEP.Primary.Recoil        = 4
 SWEP.Primary.Automatic     = false
 SWEP.Primary.Ammo          = "357"
-SWEP.Primary.Damage        = 30
-SWEP.Primary.Cone          = 0.007
+SWEP.Primary.Damage        = 34
+SWEP.Primary.Cone          = 0.01
 SWEP.Primary.ClipSize      = 10
 SWEP.Primary.ClipMax       = 20
 SWEP.Primary.DefaultClip   = 10
@@ -31,8 +31,8 @@ SWEP.Primary.Sound         = Sound( "Weapon_AK47.Single" )
 
 SWEP.HeadshotMultiplier    = 3.4
 
-SWEP.AutoSpawnable         = false
-SWEP.Spawnable             = false
+SWEP.AutoSpawnable         = true
+SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_ammo_357_ttt"
 
 SWEP.UseHands              = true
