@@ -19,7 +19,7 @@ KARMA.cv.tbonus = CreateConVar("ttt_karma_traitorkill_bonus", "40")
 KARMA.cv.tratio = CreateConVar("ttt_karma_traitordmg_ratio", "0.0003")
 KARMA.cv.debug  = CreateConVar("ttt_karma_debugspam", "0")
 
-KARMA.cv.persist = CreateConVar("ttt_karma_persist", "0")
+KARMA.cv.persist = CreateConVar("ttt_karma_persist", "1")
 KARMA.cv.falloff = CreateConVar("ttt_karma_clean_half", "0.25")
 
 KARMA.cv.autokick  = CreateConVar("ttt_karma_low_autokick", "1")

@@ -40,7 +40,7 @@ SWEP.Secondary.Delay        = 1.4
 
 SWEP.Kind                   = WEAPON_EQUIP
 SWEP.CanBuy                 = {ROLE_TRAITOR} -- only traitors can buy
-SWEP.LimitedStock           = true -- only buyable once
+SWEP.LimitedStock           = false -- only buyable once
 SWEP.WeaponID               = AMMO_KNIFE
 
 SWEP.IsSilent               = true
@@ -99,7 +99,7 @@ function SWEP:PrimaryAttack()
          -- account we do want to avoid rounding error strangeness caused by
          -- other damage scaling, causing a death when we don't expect one, so
          -- when the target's health is close to kill-point we just kill
-         if hitEnt:Health() < (self.Primary.Damage + 30) then
+         if hitEnt:Health() <= (self.Primary.Damage + 30) then
             self:StabKill(tr, spos, sdest)
          else
             local dmg = DamageInfo()

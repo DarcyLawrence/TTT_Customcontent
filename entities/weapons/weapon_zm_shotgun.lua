@@ -54,6 +54,56 @@ function SWEP:SetupDataTables()
    return BaseClass.SetupDataTables(self)
 end
 
+function SWEP:DrawHUD()
+   local sights_opacity = GetConVar("ttt_ironsights_crosshair_opacity")
+   local crosshair_brightness = GetConVar("ttt_crosshair_brightness")
+   local crosshair_size = GetConVar("ttt_crosshair_size")
+   local crosshair_circle = GetConVar("ttt_crosshair_circle")
+   local disable_crosshair = GetConVar("ttt_disable_crosshair")
+
+   if not crosshair_circle:GetBool() then return BaseClass.DrawHUD(self) end
+   
+      if self.HUDHelp then
+         self:DrawHelp()
+      end
+
+      local client = LocalPlayer()
+      if disable_crosshair:GetBool() or (not IsValid(client)) then return end
+
+      local sights = (not self.NoSights) and self:GetIronsights()
+
+      local x = math.floor(ScrW() / 2.0)
+      local y = math.floor(ScrH() / 2.0)
+      local scale = math.max(0.2,  10 * self:GetPrimaryCone())
+
+      local LastShootTime = self:LastShootTime()
+      scale = scale * (2 - math.Clamp( (CurTime() - LastShootTime) * 5, 0.0, 1.0 ))
+
+      local alpha = sights and sights_opacity:GetFloat() or 1
+      local bright = crosshair_brightness:GetFloat() or 1
+
+      -- somehow it seems this can be called before my player metatable
+      -- additions have loaded
+      if client.IsTraitor and client:IsTraitor() then
+         surface.SetDrawColor(255 * bright,
+                              50 * bright,
+                              50 * bright,
+                              255 * alpha)
+      else
+         surface.SetDrawColor(0,
+                              255 * bright,
+                              0,
+                              255 * alpha)
+      end
+
+      local gap = math.floor(20 * scale * (sights and 0.8 or 1))
+      local length = math.floor(gap + (30 * crosshair_size:GetFloat()) * scale)
+	  
+	  surface.DrawCircle(x,y,length, Color(255,255,255))
+
+	 
+   end
+
 function SWEP:Reload()
 
    --if self:GetNWBool( "reloading", false ) then return end

@@ -78,7 +78,7 @@ function SWEP:PullPin()
    if self.SetHoldType then
       self:SetHoldType(self.HoldReady)
    end
-
+ 
    self:SetPin(true)
 
    self:SetDetTime(CurTime() + self.detonate_timer)
@@ -104,6 +104,7 @@ function SWEP:Think()
          end
       else
          -- still cooking it, see if our time is up
+		 
          if SERVER and self:GetDetTime() < CurTime() then
             self:BlowInFace()
          end
@@ -112,6 +113,7 @@ function SWEP:Think()
       self:Throw()
    end
 end
+
 
 
 function SWEP:BlowInFace()
@@ -150,7 +152,7 @@ function SWEP:Throw()
       self.was_thrown = true
 
       local ang = ply:EyeAngles()
-      local src = ply:GetPos() + (ply:Crouching() and ply:GetViewOffsetDucked() or ply:GetViewOffset())+ (ang:Forward() * 8) + (ang:Right() * 10)
+      local src = ply:GetPos() + (ply:Crouching() and ply:GetViewOffsetDucked() or ply:GetViewOffset())+ (ang:Forward() * 8) 
       local target = ply:GetEyeTraceNoCursor().HitPos
       local tang = (target-src):Angle() -- A target angle to actually throw the grenade to the crosshair instead of fowards
       -- Makes the grenade go upgwards
