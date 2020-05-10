@@ -135,6 +135,7 @@ if CLIENT then
    local sights_opacity = CreateConVar("ttt_ironsights_crosshair_opacity", "0.8", FCVAR_ARCHIVE)
    local crosshair_brightness = CreateConVar("ttt_crosshair_brightness", "1.0", FCVAR_ARCHIVE)
    local crosshair_size = CreateConVar("ttt_crosshair_size", "1.0", FCVAR_ARCHIVE)
+   local crosshair_circle = CreateConVar("ttt_crosshair_circle", "0", FCVAR_ARCHIVE)
    local disable_crosshair = CreateConVar("ttt_disable_crosshair", "0", FCVAR_ARCHIVE)
 
    function SWEP:DrawHUD()
@@ -173,10 +174,10 @@ if CLIENT then
 
       local gap = math.floor(20 * scale * (sights and 0.8 or 1))
       local length = math.floor(gap + (25 * crosshair_size:GetFloat()) * scale)
-      surface.DrawLine( x - length, y, x - gap, y )
-      surface.DrawLine( x + length, y, x + gap, y )
-      surface.DrawLine( x, y - length, x, y - gap )
-      surface.DrawLine( x, y + length, x, y + gap )
+	  surface.DrawLine( x - length, y, x - gap, y )
+	  surface.DrawLine( x + length, y, x + gap, y )
+	  surface.DrawLine( x, y - length, x, y - gap )
+	  surface.DrawLine( x, y + length, x, y + gap )
    end
 
    local GetPTranslation = LANG.GetParamTranslation

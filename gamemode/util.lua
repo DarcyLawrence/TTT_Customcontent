@@ -308,7 +308,7 @@ if CLIENT then
    function util.HealthToString(health, maxhealth)
       maxhealth = maxhealth or 100
 
-      if health > maxhealth * 0.9 then
+      if health > maxhealth * 0.8 then
          return "hp_healthy", healthcolors.healthy
       elseif health > maxhealth * 0.7 then
          return "hp_hurt", healthcolors.hurt
