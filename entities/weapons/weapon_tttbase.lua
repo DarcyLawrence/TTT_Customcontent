@@ -105,8 +105,8 @@ SWEP.Primary.FalloffMax		= -1
 SWEP.Primary.Falloffscale	= -1
 
 SWEP.HeadshotMultiplier = 2.7
-SWEP.ArmMultiplier = .5
-SWEP.LegMultiplier = .5
+SWEP.ArmMultiplier = .55
+SWEP.LegMultiplier = .55
 
 SWEP.Primary.ClipSize       = -1
 SWEP.Primary.DefaultClip    = -1
