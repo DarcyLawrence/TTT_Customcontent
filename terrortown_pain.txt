@@ -1,7 +1,7 @@
-"terrortown_pain"
+"terrortown"
 {
 	"base"		"base"
-	"title"		"Trouble in Terrorist Town (Pain)"
+	"title"		"Trouble in Terrorist Town"
 	"maps"		""
 	"menusystem"	"1"
 
@@ -36,7 +36,7 @@
 			"name"		"ttt_firstpreptime"
 			"text"		"Initial Waiting Time"
 			"type"		"Numeric"
-			"default"	"30"
+			"default"	"20"
 		}
 		
 		7
