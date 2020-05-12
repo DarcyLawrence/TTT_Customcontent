@@ -32,6 +32,9 @@ SWEP.Primary.Ammo          = "AirboatGun"
 SWEP.Primary.Recoil        = 2.0
 SWEP.Primary.Sound         = Sound("Weapon_m249.Single")
 
+SWEP.ArmMultiplier = 1
+SWEP.LegMultiplier = 1
+
 SWEP.UseHands              = true
 SWEP.ViewModel             = "models/weapons/cstrike/c_mach_m249para.mdl"
 SWEP.WorldModel            = "models/weapons/w_mach_m249para.mdl"

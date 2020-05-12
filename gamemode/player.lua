@@ -763,6 +763,28 @@ function GM:ScalePlayerDamage(ply, hitgroup, dmginfo)
       dmginfo:ScaleDamage(0.7)
    end
 
+   local wep = util.WeaponFromDamage(dmginfo)
+   
+	if IsValid(wep) then
+		if hitgroup == HITGROUP_HEAD then
+			 ply.was_headshot = dmginfo:IsBulletDamage()
+			 dmginfo:ScaleDamage(wep:GetHeadshotMultiplier(ply, dmginfo))
+			 
+		elseif (hitgroup == HITGROUP_LEFTARM or	
+				hitgroup == HITGROUP_RIGHTARM) then
+				
+			dmginfo:ScaleDamage(wep:GetArmMultiplier(ply, dmginfo))
+			
+		elseif (hitgroup == HITGROUP_LEFTLEG or	
+				hitgroup == HITGROUP_RIGHTLEG) then
+				
+			dmginfo:ScaleDamage(wep:GetLegMultiplier(ply, dmginfo))
+		else
+			dmginfo:ScaleDamage(1)
+		end
+	end
+   
+   --[[
    ply.was_headshot = false
    -- actual damage scaling
    if hitgroup == HITGROUP_HEAD then
@@ -783,6 +805,7 @@ function GM:ScalePlayerDamage(ply, hitgroup, dmginfo)
 
       dmginfo:ScaleDamage(0.55)
    end
+   --]]
 
    -- Keep ignite-burn damage etc on old levels
    if (dmginfo:IsDamageType(DMG_DIRECT) or
@@ -791,6 +814,30 @@ function GM:ScalePlayerDamage(ply, hitgroup, dmginfo)
        dmginfo:IsDamageType(DMG_PHYSGUN)) then
       dmginfo:ScaleDamage(2)
    end
+end
+
+function GM:ScaleNPCDamage(ply, hitgroup, dmginfo)
+
+   local wep = util.WeaponFromDamage(dmginfo)
+   
+	if IsValid(wep) then
+		if hitgroup == HITGROUP_HEAD then
+			 ply.was_headshot = dmginfo:IsBulletDamage()
+			 dmginfo:ScaleDamage(wep:GetHeadshotMultiplier(ply, dmginfo))
+			 
+		elseif (hitgroup == HITGROUP_LEFTARM or	
+				hitgroup == HITGROUP_RIGHTARM) then
+				
+			dmginfo:ScaleDamage(wep:GetArmMultiplier(ply, dmginfo))
+			
+		elseif (hitgroup == HITGROUP_LEFTLEG or	
+				hitgroup == HITGROUP_RIGHTLEG) then
+				
+			dmginfo:ScaleDamage(wep:GetLegMultiplier(ply, dmginfo))
+		else
+			dmginfo:ScaleDamage(1)
+		end
+	end
 end
 
 -- The GetFallDamage hook does not get called until around 600 speed, which is a
@@ -1044,6 +1091,7 @@ function GM:PlayerTakeDamage(ent, infl, att, amount, dmginfo)
       if not dmginfo:IsDamageType(DMG_SLASH) then
          dmginfo:ScaleDamage(att:GetDamageFactor())
       end
+
 
       -- process the effects of the damage on karma
       KARMA.Hurt(att, ent, dmginfo)

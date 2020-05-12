@@ -61,8 +61,6 @@ function SWEP:DrawHUD()
    local crosshair_circle = GetConVar("ttt_crosshair_circle")
    local disable_crosshair = GetConVar("ttt_disable_crosshair")
 
-   if not crosshair_circle:GetBool() then return BaseClass.DrawHUD(self) end
-   
       if self.HUDHelp then
          self:DrawHelp()
       end

@@ -104,6 +104,10 @@ SWEP.Primary.FalloffMin		= -1
 SWEP.Primary.FalloffMax		= -1
 SWEP.Primary.Falloffscale	= -1
 
+SWEP.HeadshotMultiplier = 2.7
+SWEP.ArmMultiplier = .55
+SWEP.LegMultiplier = .55
+
 SWEP.Primary.ClipSize       = -1
 SWEP.Primary.DefaultClip    = -1
 SWEP.Primary.Automatic      = false
@@ -115,8 +119,6 @@ SWEP.Secondary.DefaultClip  = 1
 SWEP.Secondary.Automatic    = false
 SWEP.Secondary.Ammo         = "none"
 SWEP.Secondary.ClipMax      = -1
-
-SWEP.HeadshotMultiplier = 2.7
 
 SWEP.StoredAmmo = 0
 SWEP.IsDropped = false
@@ -316,19 +318,21 @@ function SWEP:ShootBullet( dmg, recoil, numbul, cone, fallmin, fallmax, scale)
    -- Apply bullet falloff
    if fallmin > -1 and fallmax > -1 then
 	   bullet.Callback = function ( att, tr, dmg )
+	   
 	   if att and att:IsValid() then
 		  local dist = (tr.HitPos - tr.StartPos):Length()
 			 if dist > fallmin then
 				if dist > fallmax then
 				   dmg:ScaleDamage(.5)
 				   else
-					  dmg:ScaleDamage(math.Clamp(1-dist/fallmax,scale,1))
+					  dmg:ScaleDamage(math.Clamp(1-dist/fallmax,scale,1)) 
 				   end
 				end
 			end
+			 
 		end
 	end
-
+	
    self:GetOwner():FireBullets( bullet )
 
    -- Owner can die after firebullets
@@ -354,6 +358,14 @@ end
 
 function SWEP:GetHeadshotMultiplier(victim, dmginfo)
    return self.HeadshotMultiplier
+end
+
+function SWEP:GetArmMultiplier(victim, dmginfo)
+   return self.ArmMultiplier
+end
+
+function SWEP:GetLegMultiplier(victim, dmginfo)
+   return self.LegMultiplier
 end
 
 function SWEP:IsEquipment()
