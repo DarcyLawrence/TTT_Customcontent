@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "..\gamemodes\terrortown\content\materials\models\weapons\soviet_carbine\carbine"
+	"$bumpmap"	   "..\gamemodes\terrortown\content\materials\models\weapons\soviet_carbine\carbine_normal"
+	"$model" 1
+}

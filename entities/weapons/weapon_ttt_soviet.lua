@@ -2,12 +2,19 @@ AddCSLuaFile()
 
 SWEP.HoldType              = "ar2"
 
+sound.Add({
+	name = 			"Weapon_Carbine.Single",
+	channel = 		CHAN_ITEM,
+	volume = 		1.0,
+	sound = 			"carbine.ogg"
+})
+
 if CLIENT then
    SWEP.PrintName          = "Soviet Carbine"
    SWEP.Slot               = 2
 
    SWEP.ViewModelFlip      = false
-   SWEP.ViewModelFOV       = 64
+   SWEP.ViewModelFOV       = 70
 
    SWEP.Icon               = "vgui/ttt/icon_m16"
    SWEP.IconLetter         = "w"
@@ -27,8 +34,7 @@ SWEP.Primary.Cone          = 0.01
 SWEP.Primary.ClipSize      = 10
 SWEP.Primary.ClipMax       = 20
 SWEP.Primary.DefaultClip   = 10
-SWEP.Primary.Sound         = Sound( "Weapon_AK47.Single" )
-
+SWEP.Primary.Sound         = "Weapon_Carbine.Single"
 SWEP.HeadshotMultiplier    = 3.4
 
 SWEP.AutoSpawnable         = true
@@ -36,16 +42,16 @@ SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_ammo_357_ttt"
 
 SWEP.UseHands              = true
-SWEP.ViewModel             = "models/weapons/cstrike/c_rif_ak47.mdl"
+SWEP.ViewModel             = "models/weapons/soviet_carbine/soviet_carbine.mdl"
 SWEP.WorldModel            = "models/weapons/w_rif_ak47.mdl"
 
-SWEP.IronSightsPos         = Vector(-7.58, -9.2, 0.55)
-SWEP.IronSightsAng         = Vector(2.599, -1.3, -3.6)
+SWEP.IronSightsPos         = Vector(-4.15, 0, 9.967)
+SWEP.IronSightsAng         = Vector(-4.9, -2.2, -2.1)
 
 function SWEP:SetZoom(state)
    if not (IsValid(self:GetOwner()) and self:GetOwner():IsPlayer()) then return end
    if state then
-      self:GetOwner():SetFOV(35, 0.5)
+      self:GetOwner():SetFOV(40, 0.5)
    else
       self:GetOwner():SetFOV(0, 0.2)
    end
