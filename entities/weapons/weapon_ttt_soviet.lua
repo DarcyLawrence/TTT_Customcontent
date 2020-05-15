@@ -45,7 +45,7 @@ SWEP.UseHands              = true
 SWEP.ViewModel             = "models/weapons/soviet_carbine/soviet_carbine.mdl"
 SWEP.WorldModel            = "models/weapons/w_rif_ak47.mdl"
 
-SWEP.IronSightsPos         = Vector(-4.15, 0, 9.967)
+SWEP.IronSightsPos         = Vector(-4.15, 0, 3)
 SWEP.IronSightsAng         = Vector(-4.9, -2.2, -2.1)
 
 function SWEP:SetZoom(state)
