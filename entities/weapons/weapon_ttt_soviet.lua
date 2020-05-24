@@ -4,9 +4,10 @@ SWEP.HoldType              = "ar2"
 
 sound.Add({
 	name = 			"Weapon_Carbine.Single",
-	channel = 		CHAN_ITEM,
+	channel = 		CHAN_WEAPON,
 	volume = 		1.0,
-	sound = 			"carbine.ogg"
+	sound = 		"carbine.ogg",
+	level = 400
 })
 
 if CLIENT then
@@ -30,7 +31,7 @@ SWEP.Primary.Recoil        = 4
 SWEP.Primary.Automatic     = false
 SWEP.Primary.Ammo          = "357"
 SWEP.Primary.Damage        = 34
-SWEP.Primary.Cone          = 0.01
+SWEP.Primary.Cone          = 0.005
 SWEP.Primary.ClipSize      = 10
 SWEP.Primary.ClipMax       = 20
 SWEP.Primary.DefaultClip   = 10
@@ -43,9 +44,9 @@ SWEP.AmmoEnt               = "item_ammo_357_ttt"
 
 SWEP.UseHands              = true
 SWEP.ViewModel             = "models/weapons/soviet_carbine/soviet_carbine.mdl"
-SWEP.WorldModel            = "models/weapons/w_rif_ak47.mdl"
+SWEP.WorldModel            = "models/weapons/soviet_carbine/soviet_carbine_phys.mdl"
 
-SWEP.IronSightsPos         = Vector(-4.15, 0, 3)
+SWEP.IronSightsPos         = Vector(-4.15, -5, 3)
 SWEP.IronSightsAng         = Vector(-4.9, -2.2, -2.1)
 
 function SWEP:SetZoom(state)

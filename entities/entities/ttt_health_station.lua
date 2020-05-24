@@ -22,7 +22,7 @@ if CLIENT then
 end
 
 ENT.Type = "anim"
-ENT.Model = Model("models/props/cs_office/microwave.mdl")
+ENT.Model = Model("models/medbox/medbox.mdl")
 
 --ENT.CanUseKey = true
 ENT.CanHavePrints = true

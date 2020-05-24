@@ -23,6 +23,7 @@ function GM:PlayerInitialSpawn( ply )
 
    local rstate = GetRoundState() or ROUND_WAIT
    -- We should update the traitor list, if we are not about to send it
+   -- We should update the traitor list, if we are not about to send it
    if rstate <= ROUND_PREP then
       SendTraitorList(GetTraitorFilter())
       SendConfirmedTraitors(GetInnocentFilter())
@@ -613,9 +614,9 @@ function GM:DoPlayerDeath(ply, attacker, dmginfo)
       if IsValid(attacker) and attacker:IsPlayer() then
          attacker:RecordKill(ply)
 
-         DamageLog(Format("KILL:\t %s [%s] killed %s [%s]", attacker:Nick(), attacker:GetRoleString(), ply:Nick(), ply:GetRoleString()))
+         DamageLog(Format("KILL:\t %s killed %s", attacker:Nick(), ply:Nick()))
       else
-         DamageLog(Format("KILL:\t <something/world> killed %s [%s]", ply:Nick(), ply:GetRoleString()))
+         DamageLog(Format("KILL:\t <something/world> killed %s", ply:Nick()))
       end
 
 
@@ -1096,7 +1097,7 @@ function GM:PlayerTakeDamage(ent, infl, att, amount, dmginfo)
       -- process the effects of the damage on karma
       KARMA.Hurt(att, ent, dmginfo)
 
-      DamageLog(Format("DMG: \t %s [%s] damaged %s [%s] for %d dmg", att:Nick(), att:GetRoleString(), ent:Nick(), ent:GetRoleString(), math.Round(dmginfo:GetDamage())))
+      DamageLog(Format("DMG: \t %s damaged %s for %d dmg", att:Nick() , ent:Nick() , math.Round(dmginfo:GetDamage())))
    end
 
 end

@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\weapons\soviet_carbine\carbine"
+	"$bumpmap"	 "models\weapons\soviet_carbine\carbine_normal"
+}
