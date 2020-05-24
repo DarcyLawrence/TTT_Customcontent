@@ -10,13 +10,22 @@ Description
 ===========
 Various changes to the base TTT gamemode:
 
+- New Carbine Rifle
+
+- Custom model for Health Station
+
+- Handling improvements for Pistol/Silenced Pistol/Rifle
+
 - H.U.G.E recoil reduced
 - H.U.G.E damage increase
 - H.U.G.E firerate decreased
 
-- Added damage falloff functionality for all weapons (only used by shotgun currently)
-
 - Knife instant kills at <80 health
+
+- Damage falloff
+
+- Arm/Leg damage multipliers
+
 
 Credits
 =======
