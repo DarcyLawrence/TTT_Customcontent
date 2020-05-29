@@ -44,7 +44,7 @@ SWEP.AmmoEnt               = "item_ammo_357_ttt"
 
 SWEP.UseHands              = true
 SWEP.ViewModel             = "models/weapons/soviet_carbine/soviet_carbine.mdl"
-SWEP.WorldModel            = "models/weapons/soviet_carbine/soviet_carbine_phys.mdl"
+SWEP.WorldModel            = "models/weapons/soviet_carbine/w_soviet_carbine.mdl"
 
 SWEP.IronSightsPos         = Vector(-4.15, -5, 3)
 SWEP.IronSightsAng         = Vector(-4.9, -2.2, -2.1)

@@ -212,21 +212,14 @@ function SWEP:SecondaryAttack()
 
       local ang = ply:EyeAngles()
 
-      if ang.p < 90 then
-         ang.p = -10 + ang.p * ((90 + 10) / 90)
-      else
-         ang.p = 360 - ang.p
-         ang.p = -10 + ang.p * -((90 + 10) / 90)
-      end
-
-      local vel = math.Clamp((90 - ang.p) * 5.5, 550, 800)
+      local vel = 1600
 
       local vfw = ang:Forward()
       local vrt = ang:Right()
 
       local src = ply:GetPos() + (ply:Crouching() and ply:GetViewOffsetDucked() or ply:GetViewOffset())
 
-      src = src + (vfw * 1) + (vrt * 3)
+      src = src + (vfw * 1) 
 
       local thr = vfw * vel + ply:GetVelocity()
 
