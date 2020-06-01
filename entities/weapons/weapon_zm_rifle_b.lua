@@ -2,6 +2,14 @@ AddCSLuaFile()
 
 SWEP.HoldType              = "ar2"
 
+sound.Add({
+	name = 			"Weapon_Rifle.Single",
+	channel = 		CHAN_WEAPON,
+	volume = 		1.0,
+	sound = 		"rifle_shot.ogg",
+	level = 600
+})
+
 if CLIENT then
    SWEP.PrintName          = "rifle_name"
    SWEP.Slot               = 2
@@ -27,7 +35,7 @@ SWEP.Primary.Cone          = 0.00
 SWEP.Primary.ClipSize      = 10
 SWEP.Primary.ClipMax       = 20 -- keep mirrored to ammo
 SWEP.Primary.DefaultClip   = 10
-SWEP.Primary.Sound         = Sound("Weapon_Scout.Single")
+SWEP.Primary.Sound         = Sound("Weapon_Rifle.Single")
 
 SWEP.Secondary.Sound       = Sound("Default.Zoom")
 

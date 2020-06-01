@@ -7,7 +7,7 @@ sound.Add({
 	channel = 		CHAN_WEAPON,
 	volume = 		1.0,
 	sound = 		"carbine.ogg",
-	level = 400
+	level = 600
 })
 
 if CLIENT then
