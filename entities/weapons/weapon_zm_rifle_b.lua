@@ -7,11 +7,11 @@ sound.Add({
 	channel = 		CHAN_WEAPON,
 	volume = 		1.0,
 	sound = 		"rifle_shot.ogg",
-	level = 600
+	level = 400
 })
 
 if CLIENT then
-   SWEP.PrintName          = "rifle_name"
+   SWEP.PrintName          = "110 Hitman"
    SWEP.Slot               = 2
 
    SWEP.ViewModelFlip      = false
@@ -26,13 +26,13 @@ SWEP.Base                  = "weapon_tttbase"
 SWEP.Kind                  = WEAPON_HEAVY
 SWEP.WeaponID              = AMMO_RIFLE
 
-SWEP.Primary.Delay         = 1.5
-SWEP.Primary.Recoil        = 7
+SWEP.Primary.Delay         = 1.25
+SWEP.Primary.Recoil        = 4
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "357"
-SWEP.Primary.Damage        = 50
+SWEP.Primary.Damage        = 60
 SWEP.Primary.Cone          = 0.00
-SWEP.Primary.ClipSize      = 10
+SWEP.Primary.ClipSize      = 5
 SWEP.Primary.ClipMax       = 20 -- keep mirrored to ammo
 SWEP.Primary.DefaultClip   = 10
 SWEP.Primary.Sound         = Sound("Weapon_Rifle.Single")
@@ -41,13 +41,13 @@ SWEP.Secondary.Sound       = Sound("Default.Zoom")
 
 SWEP.HeadshotMultiplier    = 4
 
-SWEP.AutoSpawnable         = false
-SWEP.Spawnable             = false
+SWEP.AutoSpawnable         = true
+SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_ammo_357_ttt"
 
 SWEP.UseHands              = true
 SWEP.ViewModel             = Model("models/weapons/rifle/rifle.mdl")
-SWEP.WorldModel            = Model("models/weapons/w_snip_scout.mdl")
+SWEP.WorldModel            = Model("models/weapons/rifle/w_rifle.mdl")
 
 SWEP.IronSightsPos         = Vector( 5, -15, -2 )
 SWEP.IronSightsAng         = Vector( 2.6, 1.37, 3.5 )
