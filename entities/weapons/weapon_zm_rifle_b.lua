@@ -7,7 +7,7 @@ sound.Add({
 	channel = 		CHAN_WEAPON,
 	volume = 		1.0,
 	sound = 		"rifle_shot.ogg",
-	level = 400
+	level = 318
 })
 
 if CLIENT then
@@ -26,11 +26,11 @@ SWEP.Base                  = "weapon_tttbase"
 SWEP.Kind                  = WEAPON_HEAVY
 SWEP.WeaponID              = AMMO_RIFLE
 
-SWEP.Primary.Delay         = 1.25
+SWEP.Primary.Delay         = 1.4
 SWEP.Primary.Recoil        = 4
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Ammo          = "357"
-SWEP.Primary.Damage        = 60
+SWEP.Primary.Damage        = 50
 SWEP.Primary.Cone          = 0.00
 SWEP.Primary.ClipSize      = 5
 SWEP.Primary.ClipMax       = 20 -- keep mirrored to ammo
