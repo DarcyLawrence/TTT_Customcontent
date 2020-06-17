@@ -60,6 +60,9 @@
 @PointClass base(Weapon) studio("models/props_lab/huladoll.mdl") = weapon_ttt_wtester : "DNA Scanner" []
 @PointClass base(Weapon) studio("models/weapons/w_defuser.mdl") = weapon_ttt_defuser : "Defuser" []
 
+@PointClass base(Weapon) studio("models/weapons/rifle/w_rifle.mdl") = weapon_zm_rifle_b : "Hitman" []
+@PointClass base(Weapon) studio("models/weapons/soviet_carbine/w_soviet_carbine.mdl") = weapon_ttt_soviet : "Soviet" []
+
 @SolidClass base(Trigger, Targetname) iconsprite("editor/obsolete.vmt") = ttt_traitor_check :
 	"A trigger volume that checks if there is a traitor inside."
 [

@@ -10,6 +10,34 @@ sound.Add({
 	level = 318
 })
 
+sound.Add({
+	name = 			"Weapon_Rifle.Reload1",
+	channel = 		CHAN_WEAPON,
+	volume = 		.2,
+	sound = 		"rifle_reload_1.ogg",
+})
+
+sound.Add({
+	name = 			"Weapon_Rifle.Reload2",
+	channel = 		CHAN_WEAPON,
+	volume = 		.2,
+	sound = 		"rifle_reload_2.ogg",
+})
+
+sound.Add({
+	name = 			"Weapon_Rifle.Cock2",
+	channel = 		CHAN_WEAPON,
+	volume = 		.2,
+	sound = 		"rifle_cock_1.ogg",
+})
+
+sound.Add({
+	name = 			"Weapon_Rifle.Cock3",
+	channel = 		CHAN_WEAPON,
+	volume = 		.2,
+	sound = 		"rifle_cock_3.ogg",
+})
+
 if CLIENT then
    SWEP.PrintName          = "110 Hitman"
    SWEP.Slot               = 2
