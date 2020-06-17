@@ -100,6 +100,8 @@ SWEP.Primary.NumShots       = 1
 SWEP.Primary.Cone           = 0.02
 SWEP.Primary.Delay          = 0.15
 
+SWEP.Primary.NumPenetrations = 0
+
 SWEP.Primary.FalloffMin		= -1
 SWEP.Primary.FalloffMax		= -1
 SWEP.Primary.Falloffscale	= -1
@@ -304,7 +306,7 @@ function SWEP:ShootBullet( dmg, recoil, numbul, cone, fallmin, fallmax, scale)
 
    numbul = numbul or 1
    cone   = cone   or 0.01
-
+   
    local bullet = {}
    bullet.Num    = numbul
    bullet.Src    = self:GetOwner():GetShootPos()
@@ -315,22 +317,9 @@ function SWEP:ShootBullet( dmg, recoil, numbul, cone, fallmin, fallmax, scale)
    bullet.Force  = 10
    bullet.Damage = dmg
    
-   -- Apply bullet falloff
-   if fallmin > -1 and fallmax > -1 then
-	   bullet.Callback = function ( att, tr, dmg )
-	   
-	   if att and att:IsValid() then
-		  local dist = (tr.HitPos - tr.StartPos):Length()
-			 if dist > fallmin then
-				if dist > fallmax then
-				   dmg:ScaleDamage(.5)
-				   else
-					  dmg:ScaleDamage(math.Clamp(1-dist/fallmax,scale,1)) 
-				   end
-				end
-			end
-			 
-		end
+   bullet.Callback = function ( att, tr, dmg )
+		self:Falloff( att, tr, dmg)
+		self:Penetrate( att, tr, dmg, 0)
 	end
 	
    self:GetOwner():FireBullets( bullet )
@@ -348,6 +337,60 @@ function SWEP:ShootBullet( dmg, recoil, numbul, cone, fallmin, fallmax, scale)
       eyeang.pitch = eyeang.pitch - recoil
       self:GetOwner():SetEyeAngles( eyeang )
    end
+end
+
+function SWEP:Falloff( att, tr , dmg)
+
+	local fallmin = self.Primary.FalloffMin
+	local fallmax = self.Primary.FalloffMax
+	local scale = self.Primary.Falloffscale
+
+	-- Apply bullet falloff
+	if fallmin > -1 and fallmax > -1 then
+		if att and att:IsValid() then
+		local dist = (tr.HitPos - tr.StartPos):Length()
+			if dist > fallmin then
+				if dist > fallmax then
+				dmg:ScaleDamage(.5)
+				else
+				dmg:ScaleDamage(math.Clamp(1-dist/fallmax,scale,1)) 
+				end
+			end
+		end
+	end
+end
+
+function SWEP:Penetrate( att, tr, dmg, penetrations)
+
+   if penetrations >= self.Primary.NumPenetrations then return end
+
+	local trace     = {}
+	trace.start     = tr.HitPos + tr.Normal
+	trace.endpos    = trace.start + (tr.Normal*64)
+	trace.mask      = MASK_SHOT
+
+   local trace = util.TraceLine(trace)
+   
+   if (trace.HitWorld and (trace.FractionLeftSolid == 1 || trace.FractionLeftSolid == 0 )) then return end
+   
+   local src = trace.StartPos + ( (tr.Normal*64) * ( trace.FractionLeftSolid / 2 ) )
+   
+   local bullet = {}
+   bullet.Num    = numbul
+   bullet.Src    = src
+   bullet.Dir    = self:GetOwner():GetAimVector()
+   bullet.Spread = Vector( cone, cone, 0 )
+   bullet.Tracer = 1
+   bullet.TracerName = self.Tracer or "Tracer"
+   bullet.Force  = 10
+   bullet.Damage = self.Primary.Damage/2
+   bullet.IgnoreEntity = tr.Entity
+
+   bullet.Callback = function ( att, tr, dmg ) 
+      self:Penetrate( att, tr, dmg, penetrations + 1) 
+   end
+   
+   timer.Simple(0, function() att:FireBullets(bullet) end)
 end
 
 function SWEP:GetPrimaryCone()

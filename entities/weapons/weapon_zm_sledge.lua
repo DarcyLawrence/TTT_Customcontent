@@ -32,6 +32,8 @@ SWEP.Primary.Ammo          = "AirboatGun"
 SWEP.Primary.Recoil        = 2.0
 SWEP.Primary.Sound         = Sound("Weapon_m249.Single")
 
+SWEP.Primary.NumPenetrations = 1
+
 SWEP.ArmMultiplier = 1
 SWEP.LegMultiplier = 1
 
