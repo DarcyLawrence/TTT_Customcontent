@@ -100,7 +100,7 @@ SWEP.Primary.NumShots       = 1
 SWEP.Primary.Cone           = 0.02
 SWEP.Primary.Delay          = 0.15
 
-SWEP.Primary.NumPenetrations = 0
+SWEP.Primary.Penetration    = 0
 
 SWEP.Primary.FalloffMin		= -1
 SWEP.Primary.FalloffMax		= -1
@@ -319,7 +319,7 @@ function SWEP:ShootBullet( dmg, recoil, numbul, cone, fallmin, fallmax, scale)
    
    bullet.Callback = function ( att, tr, dmg )
 		self:Falloff( att, tr, dmg)
-		self:Penetrate( att, tr, dmg, 0)
+		self:Penetrate( att, tr, dmg, self.Primary.Penetration)
 	end
 	
    self:GetOwner():FireBullets( bullet )
@@ -360,34 +360,37 @@ function SWEP:Falloff( att, tr , dmg)
 	end
 end
 
-function SWEP:Penetrate( att, tr, dmg, penetrations)
+function SWEP:Penetrate( att, tr, dmg, penetration)
 
-   if penetrations >= self.Primary.NumPenetrations then return end
+   if penetration <= 0.01 then return end
 
 	local trace     = {}
 	trace.start     = tr.HitPos + tr.Normal
-	trace.endpos    = trace.start + (tr.Normal*64)
+	trace.endpos    = trace.start + (tr.Normal*penetration)
 	trace.mask      = MASK_SHOT
 
    local trace = util.TraceLine(trace)
    
-   if (trace.HitWorld and (trace.FractionLeftSolid == 1 || trace.FractionLeftSolid == 0 )) then return end
+   penetration = (penetration*(1-trace.FractionLeftSolid))/4
+   
+   if (trace.HitWorld and trace.FractionLeftSolid <= 0.01) then return end
    
    local src = trace.StartPos + ( (tr.Normal*64) * ( trace.FractionLeftSolid / 2 ) )
    
    local bullet = {}
    bullet.Num    = numbul
    bullet.Src    = src
-   bullet.Dir    = self:GetOwner():GetAimVector()
+   bullet.Dir    = tr.Normal
    bullet.Spread = Vector( cone, cone, 0 )
-   bullet.Tracer = 1
+   bullet.Tracer = 0
    bullet.TracerName = self.Tracer or "Tracer"
    bullet.Force  = 10
    bullet.Damage = self.Primary.Damage/2
    bullet.IgnoreEntity = tr.Entity
 
    bullet.Callback = function ( att, tr, dmg ) 
-      self:Penetrate( att, tr, dmg, penetrations + 1) 
+      self:Falloff( att, tr, dmg)
+      self:Penetrate( att, tr, dmg, penetration) 
    end
    
    timer.Simple(0, function() att:FireBullets(bullet) end)

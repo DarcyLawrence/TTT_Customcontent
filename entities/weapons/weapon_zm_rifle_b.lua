@@ -68,6 +68,7 @@ SWEP.Primary.Sound         = Sound("Weapon_Rifle.Single")
 SWEP.Secondary.Sound       = Sound("Default.Zoom")
 
 SWEP.HeadshotMultiplier    = 4
+SWEP.Primary.Penetration   = 24
 
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true

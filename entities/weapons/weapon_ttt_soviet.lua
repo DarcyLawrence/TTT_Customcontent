@@ -38,6 +38,8 @@ SWEP.Primary.DefaultClip   = 10
 SWEP.Primary.Sound         = "Weapon_Carbine.Single"
 SWEP.HeadshotMultiplier    = 3.4
 
+SWEP.Primary.Penetration   = 32
+
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_ammo_357_ttt"

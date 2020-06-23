@@ -29,6 +29,8 @@ SWEP.Primary.ClipMax       = 60
 SWEP.Primary.DefaultClip   = 20
 SWEP.Primary.Sound         = Sound( "Weapon_M4A1.Single" )
 
+SWEP.Primary.Penetration = 16
+
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_ammo_pistol_ttt"

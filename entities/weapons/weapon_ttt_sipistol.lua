@@ -32,6 +32,8 @@ SWEP.Primary.Ammo          = "Pistol"
 SWEP.Primary.Sound         = Sound( "Weapon_USP.SilencedShot" )
 SWEP.Primary.SoundLevel    = 50
 
+SWEP.Primary.Penetration = 8
+
 SWEP.Kind                  = WEAPON_EQUIP
 SWEP.CanBuy                = {ROLE_TRAITOR} -- only traitors can buy
 SWEP.WeaponID              = AMMO_SIPISTOL

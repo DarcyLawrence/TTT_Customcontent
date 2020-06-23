@@ -26,6 +26,8 @@ SWEP.Primary.ClipMax       = 60
 SWEP.Primary.Ammo          = "Pistol"
 SWEP.Primary.Sound         = Sound( "Weapon_Glock.Single" )
 
+SWEP.Primary.Penetration = 8
+
 SWEP.AutoSpawnable         = true
 
 SWEP.AmmoEnt               = "item_ammo_pistol_ttt"

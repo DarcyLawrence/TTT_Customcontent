@@ -28,6 +28,8 @@ SWEP.Primary.DefaultClip   = 8
 SWEP.Primary.Automatic     = true
 SWEP.Primary.Sound         = Sound( "Weapon_Deagle.Single" )
 
+SWEP.Primary.Penetration   = 20
+
 SWEP.HeadshotMultiplier    = 4
 
 SWEP.AutoSpawnable         = true

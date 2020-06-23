@@ -33,6 +33,8 @@ SWEP.Secondary.Sound       = Sound("Default.Zoom")
 
 SWEP.HeadshotMultiplier    = 4
 
+SWEP.Primary.Penetration   = 64
+
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_ammo_357_ttt"

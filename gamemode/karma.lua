@@ -22,10 +22,10 @@ KARMA.cv.debug  = CreateConVar("ttt_karma_debugspam", "0")
 KARMA.cv.persist = CreateConVar("ttt_karma_persist", "1")
 KARMA.cv.falloff = CreateConVar("ttt_karma_clean_half", "0.25")
 
-KARMA.cv.autokick  = CreateConVar("ttt_karma_low_autokick", "1")
-KARMA.cv.kicklevel = CreateConVar("ttt_karma_low_amount", "450")
-KARMA.cv.autoban   = CreateConVar("ttt_karma_low_ban", "1")
-KARMA.cv.bantime   = CreateConVar("ttt_karma_low_ban_minutes", "60")
+KARMA.cv.autokick  = CreateConVar("ttt_karma_low_autokick", "0")
+KARMA.cv.kicklevel = CreateConVar("ttt_karma_low_amount", "0")
+KARMA.cv.autoban   = CreateConVar("ttt_karma_low_ban", "0")
+KARMA.cv.bantime   = CreateConVar("ttt_karma_low_ban_minutes", "5")
 
 local config = KARMA.cv
 

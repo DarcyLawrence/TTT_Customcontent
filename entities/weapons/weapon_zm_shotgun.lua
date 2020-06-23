@@ -36,6 +36,8 @@ SWEP.Primary.FalloffMin		= 150
 SWEP.Primary.FalloffMax		= 600
 SWEP.Primary.Falloffscale	= .5
 
+SWEP.Primary.Penetration   = 1
+
 SWEP.AutoSpawnable         = true
 SWEP.Spawnable             = true
 SWEP.AmmoEnt               = "item_box_buckshot_ttt"
