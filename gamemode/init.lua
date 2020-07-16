@@ -690,6 +690,9 @@ end
 
 function PrintResultMessage(type)
    ServerLog("Round ended.\n")
+
+   PrintDamageLogAll()
+
    if type == WIN_TIMELIMIT then
       LANG.Msg("win_time")
       ServerLog("Result: timelimit reached, traitors lose.\n")

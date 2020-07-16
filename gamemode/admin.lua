@@ -102,6 +102,16 @@ cvars.AddChangeCallback("ttt_highlight_admins", ApplyHighlightAdmins)
 local dmglog_console = CreateConVar("ttt_log_damage_for_console", "1")
 local dmglog_save    = CreateConVar("ttt_damagelog_save", "0")
 
+function PrintDamageLogAll()
+
+      PrintMessage(HUD_PRINTTALK,"*** Damage log:\n")
+
+      for k, txt in ipairs(GAMEMODE.DamageLog) do
+         PrintMessage(HUD_PRINTTALK, txt)
+      end
+end
+
+
 local function PrintDamageLog(ply)
    local pr = GetPrintFn(ply)
 
@@ -125,6 +135,7 @@ local function PrintDamageLog(ply)
    end
 end
 concommand.Add("ttt_print_damagelog", PrintDamageLog)
+
 
 
 local function SaveDamageLog()
