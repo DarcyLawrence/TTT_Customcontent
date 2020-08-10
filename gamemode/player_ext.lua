@@ -51,14 +51,20 @@ end
 function plymeta:SubtractCredits(amt) self:AddCredits(-amt) end
 
 function plymeta:SetDefaultCredits()
+
+   bonus = 0
+   if(self:GetLiveKarma() > 950) then
+      bonus = 1
+   end
+
    if self:GetTraitor() then
-      local c = GetConVarNumber("ttt_credits_starting")
+      local c = GetConVarNumber("ttt_credits_starting") + bonus
       if CountTraitors() == 1 then
          c = c + GetConVarNumber("ttt_credits_alonebonus")
       end
       self:SetCredits(math.ceil(c))
    elseif self:GetDetective() then
-      self:SetCredits(math.ceil(GetConVarNumber("ttt_det_credits_starting")))
+      self:SetCredits(math.ceil(GetConVarNumber("ttt_det_credits_starting")) + bonus)
    else
       self:SetCredits(0)
    end

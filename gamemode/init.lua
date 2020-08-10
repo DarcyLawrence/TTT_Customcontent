@@ -78,6 +78,8 @@ CreateConVar("ttt_detective_max", "32")
 CreateConVar("ttt_detective_min_players", "8")
 CreateConVar("ttt_detective_karma_min", "600")
 
+CreateConVar("ttt_credit_karma_bonus", "1")
+CreateConVar("ttt_credit_karma_bonus_min", "950")
 
 -- Traitor credits
 CreateConVar("ttt_credits_starting", "2")
