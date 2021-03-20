@@ -99,6 +99,7 @@ SWEP.Primary.Damage         = 1
 SWEP.Primary.NumShots       = 1
 SWEP.Primary.Cone           = 0.02
 SWEP.Primary.Delay          = 0.15
+SWEP.Primary.NumTracers     = 1
 
 SWEP.Primary.Penetration    = 0
 
@@ -382,8 +383,7 @@ function SWEP:Penetrate( att, tr, dmg, penetration)
    bullet.Src    = src
    bullet.Dir    = tr.Normal
    bullet.Spread = Vector( cone, cone, 0 )
-   bullet.Tracer = 0
-   bullet.TracerName = self.Tracer or "Tracer"
+   bullet.Tracer = self.Primary.NumTracers
    bullet.Force  = 10
    bullet.Damage = self.Primary.Damage/2
    bullet.IgnoreEntity = tr.Entity

@@ -2,7 +2,7 @@
 {
 	"base"		"base"
 	"title"		"Trouble in Terrorist Town"
-	"maps"		"ttt_"
+	"maps"		"^ttt_"
 	"menusystem"	"1"
 
 	"settings"
@@ -36,7 +36,7 @@
 			"name"		"ttt_firstpreptime"
 			"text"		"Initial Waiting Time"
 			"type"		"Numeric"
-			"default"	"20"
+			"default"	"60"
 		}
 		
 		7
@@ -44,7 +44,7 @@
 			"name"		"ttt_preptime_seconds"
 			"text"		"Preparing Time"
 			"type"		"Numeric"
-			"default"	"20"
+			"default"	"30"
 		}
 		
 		8
@@ -52,7 +52,7 @@
 			"name"		"ttt_posttime_seconds"
 			"text"		"Postround Time"
 			"type"		"Numeric"
-			"default"	"15"
+			"default"	"30"
 		}
 		
 		9
@@ -164,7 +164,7 @@
 			"name"		"ttt_detective_hats"
 			"text"		"Detective Hats"
 			"type"		"CheckBox"
-			"default"	"0"
+			"default"	"1"
 		}
 		
 		23
@@ -180,7 +180,7 @@
 			"name"		"ttt_no_nade_throw_during_prep"
 			"text"		"Preround Grenade Throwing"
 			"type"		"CheckBox"
-			"default"	"0"
+			"default"	"1"
 		}
 		
 		25
@@ -188,7 +188,7 @@
 			"name"		"ttt_teleport_telefrags"
 			"text"		"Teleporter Fragging"
 			"type"		"CheckBox"
-			"default"	"0"
+			"default"	"1"
 		}
 		
 		26

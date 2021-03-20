@@ -64,6 +64,7 @@ SWEP.Primary.ClipSize      = 5
 SWEP.Primary.ClipMax       = 20 -- keep mirrored to ammo
 SWEP.Primary.DefaultClip   = 10
 SWEP.Primary.Sound         = Sound("Weapon_Rifle.Single")
+SWEP.Primary.NumTracers    = 0
 
 SWEP.Secondary.Sound       = Sound("Default.Zoom")
 

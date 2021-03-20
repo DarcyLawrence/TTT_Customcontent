@@ -31,6 +31,7 @@ SWEP.Primary.ClipMax       = 60
 SWEP.Primary.Ammo          = "Pistol"
 SWEP.Primary.Sound         = Sound( "Weapon_USP.SilencedShot" )
 SWEP.Primary.SoundLevel    = 50
+SWEP.Primary.NumTracers    = 0
 
 SWEP.Primary.Penetration = 8
 
