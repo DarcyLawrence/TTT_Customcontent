@@ -74,5 +74,5 @@ all new weapons and gunplay, while still retaining the clunky feeling of TTTs sh
 
 ## Model Changes
 
-![](D:\Steam\steamapps\common\GarrysMod\garrysmod\gamemodes\terrortown\assets\icon_medbox.png)
+![](https://raw.githubusercontent.com/DarcyLawrence/TTT_Customcontent/master/assets/icon_medbox.png)
 
