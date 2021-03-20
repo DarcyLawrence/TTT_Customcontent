@@ -38,6 +38,13 @@ Weapons classes:
 
 
 
+### Detective Weapons
+
+- [ ] **SHOTGUN**: Bean Bag Shotgun
+- [ ] **GRENADE LAUNCHER**: Riot Gun (Launches TTT standard grenades, detonate on impact.)
+
+
+
 ## Gun Changes
 
 all new weapons and gunplay, while still retaining the clunky feeling of TTTs shootouts.
